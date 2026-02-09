@@ -13,17 +13,6 @@ provider "google" {
   zone    = "us-central1-a"
 }
 
-variable "project_id" {
-  description = "GCP Project ID"
-  type        = string
-}
-
-variable "instance_count" {
-  description = "Number of VM instances to create"
-  type        = number
-  default     = 24
-}
-
 resource "google_compute_instance" "vm_instances" {
   count        = var.instance_count
   name         = "e2-micro-instance-${count.index + 1}"
